@@ -1,0 +1,61 @@
+{
+  "name": "ecommnerce",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ecommerce",
+  "author": "Yuki Khiem Nguyen",
+  "keywords": "Ecommerce",
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
+    "lint:fix": "eslint --fix --ext \".js,.vue\" --ignore-path .gitignore .",
+    "lint": "yarn lint:js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@nuxtjs/auth-next": "^5.0.0-1613647907.37b1156",
+    "@nuxtjs/dotenv": "^1.4.1",
+    "@nuxtjs/pwa": "^3.3.5",
+    "@nuxtjs/style-resources": "^1.0.0",
+    "autoprefixer": "^10.2.5",
+    "core-js": "^3.8.3",
+    "lodash": "^4.17.21",
+    "normalize.css": "^8.0.1",
+    "nuxt": "^2.14.12",
+    "nuxt-i18n": "^6.20.6",
+    "pug": "^3.0.2",
+    "pug-plain-loader": "^1.1.0",
+    "vant": "^2.12.9",
+    "vuesax": "^4.0.1-alpha.25"
+  },
+  "devDependencies": {
+    "@nuxtjs/eslint-config": "^5.0.0",
+    "@nuxtjs/eslint-module": "^3.0.2",
+    "@vue/test-utils": "^1.1.2",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.6.3",
+    "babel-plugin-import": "^1.13.3",
+    "eslint": "^7.18.0",
+    "eslint-plugin-nuxt": "^2.0.0",
+    "eslint-plugin-vue": "^7.5.0",
+    "fibers": "^5.0.0",
+    "jest": "^26.6.3",
+    "less": "^4.1.1",
+    "less-loader": "^8.0.0",
+    "sass": "^1.32.8",
+    "sass-loader": "10",
+    "vue-jest": "^3.0.4"
+  },
+  "browserslist": [
+    "last 2 version",
+    "> 1%",
+    "maintained node versions",
+    "not dead",
+    "Android >= 6.0",
+    "iOS >= 10"
+  ]
+}

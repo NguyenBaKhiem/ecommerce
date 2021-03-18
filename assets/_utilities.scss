@@ -1,0 +1,109 @@
+@import "variables";
+
+.w-100 {
+	width: 100% !important;
+}
+
+.d-block {
+  display: block!important;
+}
+
+.d-inline-block {
+  display: inline-block;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.p-relative {
+  position: relative;
+}
+
+.p-absolute {
+  position: absolute;
+}
+
+.p-fixed {
+  position: fixed;
+}
+
+.clearfix {
+  clear: both;
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+.text-white {
+  color: $--color-white;
+}
+
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.cs-pointer {
+	cursor: pointer;
+}
+
+@for $i from 0 to 15 {
+  .m-#{$i * 2} {
+    margin: $i * 2px;
+  }
+  .mt-#{$i * 2} {
+    margin-top: $i * 2px;
+  }
+  .mb-#{$i * 2} {
+    margin-bottom: $i * 2px;
+  }
+  .ml-#{$i * 2} {
+    margin-left: $i * 2px;
+  }
+  .mr-#{$i * 2} {
+    margin-right: $i * 2px;
+  }
+  .mx-#{$i * 2} {
+    margin-left: $i * 2px;
+    margin-right: $i * 2px;
+  }
+  .my-#{$i * 2} {
+    margin-top: $i * 2px;
+    margin-bottom: $i * 2px;
+  }
+  .p-#{$i * 2} {
+    padding: $i * 2px;
+  }
+  .pt-#{$i * 2} {
+    padding-top: $i * 2px;
+  }
+  .pb-#{$i * 2} {
+    padding-bottom: $i * 2px;
+  }
+  .pl-#{$i * 2} {
+    padding-left: $i * 2px;
+  }
+  .pr-#{$i * 2} {
+    padding-right: $i * 2px;
+  }
+  .px-#{$i * 2} {
+    padding-left: $i * 2px;
+    padding-right: $i * 2px;
+  }
+  .py-#{$i * 2} {
+    padding-top: $i * 2px;
+    padding-bottom: $i * 2px;
+  }
+  .br-#{$i * 2} {
+    border-radius: $i * 2px;
+  }
+}
