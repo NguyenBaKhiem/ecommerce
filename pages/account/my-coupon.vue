@@ -1,9 +1,6 @@
-<template>
-  <div
-    id="switch-language"
-    class="container-without-nav"
-  >
-    <nav-bar
+<template lang="pug">
+  #switch-language.container-without-nav
+    nav-bar(
       fixed
       left-arrow
       :border="false"
@@ -11,15 +8,14 @@
       :title="$t('pages.my_coupon.title')"
       style="height: 48px"
       @click-left="onClickLeft"
-    />
-    <client-only>
-      <coupon-list
+    )
+    client-only
+      coupon-list(
         :coupons="coupons"
         style="margin-top: 48px;"
+        currency="VND"
         @exchange="onExchange"
-      />
-    </client-only>
-  </div>
+      )
 </template>
 
 <script>

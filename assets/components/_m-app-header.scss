@@ -1,11 +1,18 @@
 ::v-deep.m-app-header {
   .vs-navbar-content {
+    position: fixed;
     z-index: 2000;  
     .vs-navbar {
     }
   }
-  .vs-sidebar__item.hasIcon.active {
-    padding-left: 0;
+  .vs-sidebar {
+    overflow-x: auto;
+    .vs-sidebar__item {
+      height: 48px;
+      &.hasIcon.active {
+        padding-left: 0;
+      }
+    }
   }
   .van-search {
     .van-icon-search {

@@ -16,6 +16,9 @@ export default {
     log_out: 'Đăng xuất',
     support: 'Hỗ trợ'
   },
+  input: {
+    comment: 'Comment'
+  },
   common: {
     edit: 'Chỉnh sửa',
     create: 'Tạo mới',
@@ -47,6 +50,14 @@ export default {
     },
     my_coupon: {
       title: 'Coupon'
+    },
+    my_order: {
+      title: 'My orders',
+      all: 'All',
+      received: 'Received',
+      transport: 'Transport',
+      successed: 'Successed',
+      failed: 'Failed'
     },
     edit_address: {
       title: 'Edit Address'

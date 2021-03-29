@@ -25,6 +25,14 @@ export default {
       become_a_shop: 'Trở thành người bán'
     }
   },
+  placeholder: {
+    type_comment: 'Viết nhận xét...',
+    choose_feedback_type: 'Chọn lý do phản hồi'
+  },
+  input: {
+    comment: 'Nhận xét',
+    feedback_type: 'Loại phản hồi'
+  },
   common: {
     edit: 'Chỉnh sửa',
     create: 'Tạo mới',
@@ -59,9 +67,9 @@ export default {
     },
     my_order: {
       title: 'Đơn hàng',
-      received: 'Đã tiếp nhận',
-      transport: 'Chờ vận chuyển',
-      pending: 'Chờ thanh toán',
+      all: 'Tất cả',
+      received: 'Tiếp nhận',
+      transport: 'Vận chuyển',
       successed: 'Thành công',
       failed: 'Hủy bỏ'
     },

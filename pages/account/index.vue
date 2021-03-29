@@ -1,173 +1,187 @@
-<template>
-  <div
-    id="account"
-    class="container"
-  >
-    <cell-group>
-      <cell
+<template lang="pug">
+  #account.container
+    cell-group
+      cell(
+        is-link
         style="background-color: #dce6ff;color:#000000;"
         label-class="labelClass"
-        is-link
         center
-      >
-        <template slot="title">
-          <div
-            v-if="userInfo.token"
-            class="personMsg"
-          >
-            <vs-avatar size="40">
-              <img :src="userImage.loginIcon" alt="">
-              <!--               <template #icons>
-                <img src="/social/facebook.svg" alt="">
-                <img src="/social/google.svg" alt="">
-                <img src="/social/zalo.svg" alt="">
-              </template> -->
-            </vs-avatar>
-            <!--             <div
-              v-if="userInfo.sex"
-              class="sex"
-            >
-              <img
-                :src="userInfo.sex === 1 ? userImage.female : userImage.male"
-                alt=""
-              >
-            </div> -->
-            <div
-              v-if="userInfo.token"
-              class="personInfo"
-            >
-              <span>{{ userInfo.user_name }}</span>
-              <span>Tel: 0124214</span>
-            </div>
-          </div>
-          <div
-            v-if="!userInfo.token"
-            class="personMsg"
-          >
-            <vs-avatar>
-              <template #text>
-                Customer
-              </template>
-            </vs-avatar>
-            <div
-              v-if="!userInfo.token"
-              class="personInfo"
-            >
-              <div>Login</div>
-            </div>
-          </div>
-        </template>
-      </cell>
-    </cell-group>
-    <cell-group>
-      <cell
+      )
+        template(slot="title")
+          .personMsg(v-if="userInfo.token")
+            vs-avatar(size="40")
+              img(:src="userImage.loginIcon" alt="")
+            .personInfo(v-if="userInfo.token")
+              span {{ userInfo.user_name }}
+              span Tel: 0124214
+          .personMsg(v-if="!userInfo.token")
+            vs-avatar
+              template(#text)
+                | Customer
+            .personInfo(v-if="!userInfo.token")
+              div Login
+    cell-group
+      cell(
         title="My order"
         icon="label-o"
         :value="'View all orders'"
         is-link
-      />
-      <grid :border="false" :column-num="3">
-        <grid-item
+        :to="{ name: 'account-my-order' }"
+      )
+      grid(
+        :border="false"
+        :column-num="4"
+      )
+        grid-item(
           v-for="(order,index) in orderData"
           :key="index"
           :icon="order.icon"
-          :text="$t(order.title)"
-        />
-      </grid>
-    </cell-group>
-    <cell-group style="margin-top:0.4rem">
-      <cell
-        title="My Coupons"
+          :text="order.title"
+          :badge="convertBadge(order.total)"
+          :to="{ name: 'account-my-order', params: { active: order.title } }"
+        )
+    cell-group.mt-6
+      cell(
+        is-link
         icon="coupon-o"
+        title="My Coupons"
         :value="userInfo.token ? '2' : ''"
-        is-link
         :to="{ name: 'account-my-coupon' }"
-      />
-      <cell
-        title="My shipping address"
+      )
+      cell(
+        is-link
         icon="todo-list-o"
-        is-link
+        title="My shipping address"
         :to="{ name: 'account-my-address' }"
-      />
-    </cell-group>
-    <cell-group style="margin-top:0.4rem">
-      <cell
-        title="benefits of bank card holders"
+      )
+    cell-group.mt-6
+      cell(
+        is-link
         icon="good-job-o"
-        is-link
+        title="benefits of bank card holders"
         :to="{ name: 'account-language' }"
-      />
-      <cell
-        title="Payment"
+      )
+      cell(
+        is-link
         icon="idcard"
-        is-link
+        title="Payment"
         :to="{ name: 'account-my-address' }"
-      />
-    </cell-group>
-
-    <cell-group style="margin-top:0.4rem">
-      <cell
-        title="Gavo gem"
+      )
+    cell-group.mt-6
+      cell(
+        is-link
         icon="gem-o"
-        is-link
+        title="Gavo gem"
         :to="{ name: 'account-language' }"
-      />
-      <cell
-        title="bounty hunting"
-        icon="gift-o"
+      )
+      cell(
         is-link
+        icon='gift-o'
+        title='bounty hunting'
         :to="{ name: 'account-language' }"
-      />
-    </cell-group>
-
-    <cell-group style="margin-top:0.4rem">
-      <cell
+      )
+    cell-group.mt-6
+      cell(
+        is-link
         title="setting"
         icon="setting-o"
+      )
+      cell(
         is-link
-      />
-      <cell
         title="feedback"
         icon="comment-o"
+        @click="showFeedBack = true"
+      )
+      cell(
         is-link
-      />
-      <cell
         title="Language"
         icon="/language.svg"
-        is-link
         :to="{ name: 'account-language' }"
-      />
-    </cell-group>
-
-    <div
-      class="version text-center"
-      style="margin: 10px 0"
-    >
-      version 1.4.3
-    </div>
-    <div style="padding: 0 10px;">
-      <van-button
+      )
+    popup(
+      round
+      closeable
+      position="bottom"
+      v-model="showFeedBack"
+      :style="{ height: '42%' }"
+    )
+      .mt-30.mx-8
+        field(name="rate" label="Rate")
+          template(#input)
+            rate(
+              v-model="feedback.rate" 
+              required
+              allow-half
+            )
+        field(
+          readonly
+          clickable
+          name="picker"
+          :value="feedback.type"
+          :label="$t('input.feedback_type')"
+          :placeholder="$t('placeholder.choose_feedback_type')"
+          @click="showFeedbackPicker = true"
+        )
+        popup(
+          round
+          position="bottom"
+          v-model="showFeedbackPicker"
+        )
+          picker(
+            show-toolbar
+            :columns="columns"
+            @confirm="onConfirm"
+            @cancel="showFeedbackPicker = false"
+          )
+        field(
+          v-model="feedback.comment"
+          rows="2"
+          autosize
+          :border="true"
+          :label="$t('input.comment')"
+          type="textarea"
+          maxlength="50"
+          :placeholder="$t('placeholder.type_comment')"
+          show-word-limit
+        )
+        .mx-10.mt-30
+          van-button(
+            round
+            block
+            plain
+            type="info"
+            native-type="submit"
+          )
+            | Submit
+    .version.text-center.my-10
+      | version 1.4.3
+    .m-10
+      van-button(
         type="info"
         block
         plain
         size="small"
-      >
-        Logout
-      </van-button>
-    </div>
-  </div>
+      )
+        | Logout
+
 </template>
 
 <script>
-import { Cell, CellGroup, Grid, GridItem } from 'vant'
+import { Cell, CellGroup, Grid, GridItem, Popup, Field, Rate, Picker } from 'vant'
+import { convertBadge } from '@/utilities'
+
 export default {
   name: 'Account',
 
   components: {
     Cell,
-    CellGroup,
+    Rate,
     Grid,
-    GridItem
+    Field,
+    Popup,
+    Picker,
+    GridItem,
+    CellGroup
   },
 
   data: () => ({
@@ -181,18 +195,33 @@ export default {
       sex: 1,
       user_name: 'yuki',
       token: 'wqrqrqwr'
-    }
+    },
+    showFeedBack: false,
+    feedback: {
+      rate: null,
+      comment: '',
+      type: null
+    },
+    columns: ['Dịch vụ', 'Báo lỗi', 'Tính năng'],
+    showFeedbackPicker: false
   }),
 
   computed: {
     orderData () {
       return [
-        { icon: 'cart-circle-o', title: this.$t('pages.my_order.received') },
-        { icon: 'logistics', title: this.$t('pages.my_order.transport') },
-        { icon: 'completed', title: this.$t('pages.my_order.successed') },
-        { icon: 'pending-payment', title: this.$t('pages.my_order.pending') },
-        { icon: 'failure', title: this.$t('pages.my_order.failed') }
+        { icon: 'cart-circle-o', title: this.$t('pages.my_order.received'), total: 0, name: 'received' },
+        { icon: 'logistics', title: this.$t('pages.my_order.transport'), total: 20, name: 'transport' },
+        { icon: 'completed', title: this.$t('pages.my_order.successed'), total: 4, name: 'successed' },
+        { icon: 'failure', title: this.$t('pages.my_order.failed'), total: 1, name: 'failed' }
       ]
+    }
+  },
+
+  methods: {
+    convertBadge,
+    onConfirm (value) {
+      this.feedback.type = value
+      this.showFeedbackPicker = false
     }
   }
 }

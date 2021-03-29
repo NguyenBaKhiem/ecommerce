@@ -15,6 +15,19 @@ export default {
 
   data: () => ({}),
 
+  computed: {
+    goStripeConnect () {
+      const data = {
+        client_id: 'ca_J56HIJlXzbNSxX8S9e5GQ5tyUcNM2PAf',
+        redirect_uri: 'http://localhost:1411',
+        email: 'khiem.nguyen@sotatek.com',
+        'stripe_user[first_name]': 'yuki',
+        'suggested_capabilities[]': 'card_payments'
+      }
+      return `https://connect.stripe.com/express/oauth/authorize${this.jsonToQueryString(data)}`
+    }
+  },
+
   mounted () {
     const code = this.$route.query.code
     if (!code) return
@@ -27,13 +40,8 @@ export default {
   },
 
   methods: {
-    goStripeConnect () {
-      const data = {
-        client_id: 'ca_J56HIJlXzbNSxX8S9e5GQ5tyUcNM2PAf',
-        redirect_uri: 'http://localhost:1411',
-        email: 'khiem.nguyen@sotatek.com'
-      }
-      window.location.href = `https://connect.stripe.com/express/oauth/authorize${this.jsonToQueryString(data)}`
+    onClickGoStripeConnect () {
+      window.location.href = this.goStripeConnect
     },
 
     jsonToQueryString (json) {

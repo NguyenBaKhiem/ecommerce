@@ -1,19 +1,9 @@
 <template lang="pug">
   tabbar.footer(v-model="active")
-    tabbar-item(name="home" icon="home-o" :to="{ name: 'index' }")
+    tabbar-item(name="index" icon="home-o" :to="{ name: 'index' }")
     tabbar-item(name="categories" icon="apps-o")
-    tabbar-item(name="checkout")
-      template(#icon)
-        vs-avatar(
-          style=""
-          size="30"
-          badge-color='danger'
-          badge-position='top-right'
-        )
-          icon(name="shopping-cart-o")
-          template(#badge)
-            | 28
-    tabbar-item(name="profile" icon="user-o" :to="{ name: 'account' }")
+    tabbar-item(name="cart" :to="{ name: 'cart' }" icon="shopping-cart-o" :badge="10")
+    tabbar-item(name="account" icon="user-o" :to="{ name: 'account' }")
 </template>
 
 <script>
@@ -29,8 +19,12 @@ export default {
   },
 
   data: () => ({
-    active: 'home'
-  })
+    active: null
+  }),
+
+  mounted () {
+    this.active = this.$route.name
+  }
 }
 </script>
 

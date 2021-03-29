@@ -1,9 +1,6 @@
-<template>
-  <div
-    id="switch-language"
-    class="container-without-nav"
-  >
-    <nav-bar
+<template lang="pug">
+  #switch-language.container-without-nav
+    nav-bar(
       fixed
       left-arrow
       :border="false"
@@ -13,27 +10,22 @@
       :right-text="$t('common.confirm')"
       @click-left="onClickLeft"
       @click-right="onClickSave"
-    />
+    )
 
-    <div style="margin-top: 48px;">
-      <radio-group v-model="radio">
-        <cell-group>
-          <cell
+    div(style="margin-top: 48px;")
+      radio-group(v-model="radio")
+        cell-group
+          cell(
             v-for="locale in availableLocales"
             :key="locale.code"
             :title="$t(`pages.language.${locale.code}`)"
             clickable
             @click="radio = locale.code"
-          >
-            <radio
+          )
+            radio(
               slot="right-icon"
               :name="locale.code"
-            />
-          </cell>
-        </cell-group>
-      </radio-group>
-    </div>
-  </div>
+            )
 </template>
 
 <script>

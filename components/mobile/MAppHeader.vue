@@ -129,9 +129,10 @@
           vs-avatar.cs-pointer(
             size="36"
             info
-            @click.native="reduce = !reduce"
+            @click.native="activeSidebar = false"
           )
-            icon(:name="reduce ? 'arrow' : 'arrow-left'")
+            icon(:name="'cross'")
+            //- icon(:name="reduce ? 'arrow' : 'arrow-left'")
     popup(
       v-model="popupSearch"
       position="bottom"

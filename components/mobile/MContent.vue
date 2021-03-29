@@ -6,8 +6,6 @@
         img(v-lazy='image')
     //- nuxt-link(v-for="locale in availableLocales" :key="locale.code" :to="switchLocalePath(locale.code)")
     //-   | {{ locale.name }}
-    van-button(type="primary" @click.stop="goStripeConnect")
-      | Connect
 </template>
 <script>
 import { Icon, Swipe, SwipeItem, NoticeBar } from 'vant'
@@ -30,22 +28,7 @@ export default {
     ]
   }),
 
-  methods: {
-    goStripeConnect () {
-      const data = {
-        client_id: 'ca_J56HIJlXzbNSxX8S9e5GQ5tyUcNM2PAf',
-        redirect_uri: 'http://localhost:1411',
-        email: 'khiem.nguyen@sotatek.com'
-      }
-      window.location.href = `https://connect.stripe.com/express/oauth/authorize${this.jsonToQueryString(data)}`
-    },
-
-    jsonToQueryString (json) {
-      return '?' + Object.keys(json).map(key => {
-        return encodeURIComponent(key) + '=' + encodeURIComponent(json[key])
-      }).join('&')
-    }
-  }
+  methods: {}
 }
 </script>
 

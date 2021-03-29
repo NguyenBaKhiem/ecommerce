@@ -48,7 +48,10 @@ export default {
 
   styleResources: {
     scss: [
-      '~assets/scss/abstracts/_variables.scss'
+      '~/assets/_variables.scss'
+    ],
+    less: [
+      '~/assets/_variables.less'
     ]
   },
   /**
@@ -238,10 +241,10 @@ export default {
           basedir: resolve(__dirname, 'templates')
         }
       })
-      config.module.rules.push({
-        test: /\.scss$/,
-        loader: 'sass-loader'
-      })
+      // config.module.rules.push({
+      //   test: /\.less$/,
+      //   loader: 'less-loader'
+      // })
     },
     // optimization: {
     //   splitChunks: {
@@ -292,5 +295,15 @@ export default {
      */
     API_HOST: process.env.API_HOST || `http://${process.env.API_ROOT}`,
     SOCKET_HOST: process.env.SOCKET_HOST || `ws://${process.env.API_ROOT}`
+  },
+  less: {
+    lessOptions: {
+      modifyVars: {
+        // overide with less vars
+        'tabs-line-height': '48px',
+        // or override with less file
+        hack: 'true; @import "your-less-file-path.less";'
+      }
+    }
   }
 }

@@ -4,14 +4,13 @@ module.exports = {
     browser: true,
     node: true
   },
-  parserOptions: {
-    parser: 'babel-eslint'
-  },
+  parser: '@babel/eslint-parser',
   extends: [
     '@nuxtjs',
     'plugin:nuxt/recommended'
   ],
   plugins: [
+    '@babel'
   ],
   // add your custom rules here
   rules: {

@@ -1,8 +1,8 @@
 <template lang="pug">
   component(:is="$mobile ? 'MobileLayout' : 'DesktopLayout'")
     div
-      //- transition(:name="slide")
-      Nuxt
+      transition(:name="slide")
+        Nuxt
 </template>
 
 <script>
