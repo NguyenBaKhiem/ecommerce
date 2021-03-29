@@ -52,18 +52,18 @@
 import { Tabs, Tab, NavBar } from 'vant'
 import OrderType from '@/components/mobile/order/OrderType'
 export default {
-  data () {
-    return {
-      typeArray: [],
-      active: this.$route.params.active
-    }
-  },
 
   components: {
     OrderType,
     Tabs,
     Tab,
     NavBar
+  },
+  data () {
+    return {
+      typeArray: [],
+      active: this.$route.params.active
+    }
   },
 
   methods: {

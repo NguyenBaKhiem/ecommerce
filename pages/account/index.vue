@@ -109,7 +109,7 @@
         field(name="rate" label="Rate")
           template(#input)
             rate(
-              v-model="feedback.rate" 
+              v-model="feedback.rate"
               required
               allow-half
             )
