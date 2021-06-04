@@ -1884,10 +1884,10 @@
     "@typescript-eslint/types" "4.19.0"
     eslint-visitor-keys "^2.0.0"
 
-"@vant/icons@1.5.2":
-  version "1.5.2"
-  resolved "https://registry.yarnpkg.com/@vant/icons/-/icons-1.5.2.tgz#3f3ea353a0eacd38c113757bd31836489facb10b"
-  integrity sha512-Gy2mFIgObvCh1azp6LklQYsNFrCjMLxf/mEzHD6WV0pZbMBNjsb7bWvAjPo3Wygo9IVtGqi/36wrtosv3PkyRg==
+"@vant/icons@^1.5.3":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@vant/icons/-/icons-1.6.0.tgz#3db7eb7f963f51a2a08676720d5af9c4c3512feb"
+  integrity sha512-4Hvq4tl4grCOJLZ0e8ZaivBV8xOcmTPmTT8BDkTrEIKqnDowRFDdsXxcHECzWmbmMx+CYGdngvd2Cq8YR9DfKA==
 
 "@vant/popperjs@^1.0.0":
   version "1.0.4"
@@ -10994,13 +10994,13 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
-vant@^2.12.9:
-  version "2.12.10"
-  resolved "https://registry.yarnpkg.com/vant/-/vant-2.12.10.tgz#b4a64f847c098c71ad696ce34d68cea07c02c308"
-  integrity sha512-qcGMrwpg+CmpaXrktz1Xcqeq2j+lTzYmy8VwO216MMGBA/pG2JZoKXvdP39viCZIJua+t3kyDUKQZlI8D+58CQ==
+vant@^2.12.21:
+  version "2.12.21"
+  resolved "https://registry.yarnpkg.com/vant/-/vant-2.12.21.tgz#a5160a1358627a7a02c5a7bb6a911bcc2c0e717e"
+  integrity sha512-BvS3tLZS68drJJzs0Ymqj819BQbU3evdUYaJClGzXEXgUZb2pPFBFsD69NE0L7iHcGPYwQhRSpvg+budk8Xr7A==
   dependencies:
     "@babel/runtime" "7.x"
-    "@vant/icons" "1.5.2"
+    "@vant/icons" "^1.5.3"
     "@vant/popperjs" "^1.0.0"
     "@vue/babel-helper-vue-jsx-merge-props" "^1.0.0"
     vue-lazyload "1.2.3"
