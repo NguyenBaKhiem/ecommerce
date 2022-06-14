@@ -20,7 +20,7 @@
     "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/pwa": "^3.3.5",
     "autoprefixer": "^10.2.5",
-    "core-js": "^3.8.3",
+    "core-js": "^3.23.0",
     "lodash": "^4.17.21",
     "normalize.css": "^8.0.1",
     "nuxt": "^2.14.12",
