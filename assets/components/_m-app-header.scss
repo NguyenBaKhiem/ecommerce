@@ -1,22 +1,43 @@
 ::v-deep.m-app-header {
   .vs-navbar-content {
     position: fixed;
-    z-index: 2000;  
+    z-index: 2000;
+    padding-top: var(--sat);
+    height: $--height-header;
+    background: $--color-pattens-blue;
+    background: linear-gradient(79deg, #{$--color-pattens-blue} 0%, #{$--color-hawkes-blue} 100%);
     .vs-navbar {
+      background-color: $--color-white;
     }
   }
-  .vs-sidebar {
-    overflow-x: auto;
-    .vs-sidebar__item {
-      height: 48px;
-      &.hasIcon.active {
-        padding-left: 0;
+  .vs-sidebar-content {
+    margin-top: var(--sat);
+    padding: 0 0 var(--sab) 0;
+    height: calc(100% - var(--sat));
+    .vs-sidebar {
+      overflow-x: auto;
+      .vs-sidebar__item {
+        height: $--height-header;
+        &.hasIcon.active {
+          padding-left: 0;
+        }
       }
     }
   }
-  .van-search {
-    .van-icon-search {
-      font-size: 22px;
+  .van-popup.search {
+    height: calc(100vh - var(--sat));
+    height: calc(#{$--full-height} - var(--sat));
+    .van-search {
+      .van-icon-search {
+        font-size: 22px;
+      }
     }
+  }
+}
+
+@supports(padding: max(0px)) {
+  .vs-sidebar-content {
+    padding-left: max(12px, env(--sal));
+    padding-right: max(12px, env(--sar));
   }
 }

@@ -1,21 +1,20 @@
 <template lang="pug">
-  #switch-language.container-without-nav
+  #coupons.container-without-nav
     nav-bar(
       fixed
       left-arrow
       :border="false"
       :z-index="2001"
       :title="$t('pages.my_coupon.title')"
-      style="height: 48px"
       @click-left="onClickLeft"
     )
     client-only
-      coupon-list(
-        :coupons="coupons"
-        style="margin-top: 48px;"
-        currency="VND"
-        @exchange="onExchange"
-      )
+      .content
+        coupon-list(
+          :coupons="coupons"
+          currency="VND"
+          @exchange="onExchange"
+        )
 </template>
 
 <script>
@@ -58,7 +57,7 @@ export default {
       this.$router.go(-1)
     },
     onExchange (code) {
-      if (code === '520it') {
+      if (code === 'yuki') {
         this.coupons.push(this.coupons[0])
       }
     }
@@ -67,19 +66,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#couponList {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background-color: #f5f5f5;
-  z-index: 999;
+::v-deep#coupons {
   .van-nav-bar__title {
     color: black;
   }
   .van-icon {
     color: #dedede;
+  }
+  .van-coupon-list {
+    // height: calc(#{$--full-height} - #{$--height-header});
+    // overflow: auto;
+    &__bottom {
+      bottom: var(--sat);
+      z-index: 2001;
+    }
   }
 }
 </style>

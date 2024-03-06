@@ -23,5 +23,6 @@ export default {
 .mobileLayout {
   background-color: aliceblue;
   overflow: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 </style>

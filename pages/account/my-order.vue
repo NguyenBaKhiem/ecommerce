@@ -1,5 +1,5 @@
 <template lang="pug">
-  #myOrder.ontainer-without-nav
+  #my-order.container-without-nav
     nav-bar(
       fixed
       left-arrow
@@ -7,7 +7,6 @@
       :z-index="2001"
       :title=" $t('pages.my_order.title')"
       @click-left="onClickLeft"
-      style="height: 48px"
     )
     tabs(
       v-model="active"
@@ -75,4 +74,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+::v-deep#my-order {
+  .van-tabs {
+    margin-top: calc($--height-header);
+  }
+}
 </style>

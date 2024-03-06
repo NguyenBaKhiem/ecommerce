@@ -1,5 +1,9 @@
 <template lang="pug">
-  tabbar.footer(v-model="active")
+  tabbar.footer(
+    route
+    safe-area-inset-bottom
+    v-model="active"
+  )
     tabbar-item(name="index" icon="home-o" :to="{ name: 'index' }")
     tabbar-item(name="categories" icon="apps-o")
     tabbar-item(name="cart" :to="{ name: 'cart' }" icon="shopping-cart-o" :badge="10")

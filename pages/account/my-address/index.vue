@@ -5,13 +5,10 @@
       left-arrow
       :border="false"
       :z-index="2001"
-      :style="{ height: '48px' }"
       :title="$t('pages.my_address.title')"
       @click-left="onClickLeft"
     )
-    div(
-      :style="{ marginTop: '48px', height: 'calc(100vh - 48px - 50px)' }"
-    )
+    .content
       address-list(
         :list="list"
         v-model="chosenAddressId"
@@ -73,11 +70,12 @@ export default {
 
   methods: {
     onAdd () {
-      console.log('hi')
     },
+
     onClickLeft () {
       this.$router.back()
     },
+
     onEdit (item, index) {
       this.$router.push({ name: 'account-my-address-id-edit', params: { id: item.id } })
     }

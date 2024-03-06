@@ -7,7 +7,6 @@
       :z-index="2001"
       :title="$t('pages.my_order.title')"
       @click-left="onClickLeft"
-      style="height: 48px"
     )
     checkbox-group.card-goods(
       v-model="checkedGoods"
@@ -149,6 +148,7 @@ export default {
     onClickLeft () {
       this.$router.back()
     },
+
     init () {
       this.cartList = [
         {
@@ -166,9 +166,11 @@ export default {
       ]
       this.checkedGoods = []
     },
+
     editCart () {
       this.isEdit = !this.isEdit
     },
+
     reduceCount (item, count) {
       if (!count && count !== 0) {
         Toast({
@@ -188,6 +190,7 @@ export default {
       item.Cartcount = count
       this.updateCartCountFun(item.Goodid, count)
     },
+
     addCount (item, count) {
       if (!count && count !== 0) {
         Toast({
@@ -207,6 +210,7 @@ export default {
       item.Cartcount = count
       this.updateCartCountFun(item.Goodid, count)
     },
+
     reduceEditCount () {
       if (!this.editNum && this.editNum !== 0) {
         Toast({
@@ -224,6 +228,7 @@ export default {
       }
       this.editNum--
     },
+
     addEditCount () {
       if (!this.editNum && this.editNum !== 0) {
         Toast({
@@ -241,15 +246,18 @@ export default {
       }
       this.editNum++
     },
+
     showModal (item) {
       this.modalShow = true
       this.editGood = item
       const count = item.Cartcount
       this.editNum = count
     },
+
     goHome () {
       this.$router.push('/')
     },
+
     beforeClose (action, done) {
       if (action === 'confirm') {
         if (!this.editNum) {
@@ -283,9 +291,11 @@ export default {
         done()
       }
     },
+
     formatPrice (price) {
       return price.toFixed(2)
     },
+
     selectAll () {
       if (this.checkedAll) {
         for (let i = 0; i < this.cartList.length; i++) {
@@ -297,6 +307,7 @@ export default {
         this.checkedAllMsg = '全选'
       }
     },
+
     updateCartCountFun (id, count) {
       clearTimeout(this.timer)
       this.timer = setTimeout(() => {
@@ -309,6 +320,7 @@ export default {
         //   })
       }, 500)
     },
+
     onSubmit () {
       if (this.isEdit) {
         if (!this.checkedGoods.length) {

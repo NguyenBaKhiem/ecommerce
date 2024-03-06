@@ -3,13 +3,17 @@
     div
       transition(:name="slide")
         Nuxt
+    .spacer
 </template>
 
 <script>
 export default {
+  auth: false,
+
   data: () => ({
     slide: 'slide-left'
   }),
+
   watch: {
     $route (to, from) {
       const toDepth = to.path.split('/').length

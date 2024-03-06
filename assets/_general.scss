@@ -1,15 +1,53 @@
-.container {
-  width: 100%;
-  margin-top: 48px;
-  height: calc(100vh - 48px - 50px);
-  position: relative;
-  overflow: auto;
+:root {
+  --sat: env(safe-area-inset-top);
+  --sar: env(safe-area-inset-right);
+  --sab: env(safe-area-inset-bottom);
+  --sal: env(safe-area-inset-left);
 }
 
-.container-without-nav {
-  width: 100%;
-  margin-top: 0;
-  height: calc(100vh - 50px);
-  position: relative;
-  overflow: auto;
+* {
+  box-sizing: border-box;
+  touch-action: manipulation;
+}
+@supports(padding: max(0px)) {
+  body {
+     padding-left: max(12px, var(--sal));
+     padding-right: max(12px, var(--sar));
+  }
+}
+body {
+  padding: var(--sat) var(--sar) var(--sab) var(--sal);
+  .container, .container-without-nav {
+    width: 100%;
+    position: relative;
+    padding-bottom: var(--sab);
+  }
+
+  .container {
+    overflow: auto;
+    margin-top: $--height-header;
+    height: calc(#{$--full-height} - #{$--height-header} - #{$--height-footer} + var(--sab));
+  }
+
+  // @supports (-webkit-touch-callout: none) {
+  //   body {
+  //     /* The hack for Safari */
+  //     height: -webkit-fill-available;
+  //   }
+  // }
+
+  .container-without-nav {
+    margin-top: 0;
+    height: calc(#{$--full-height} - #{$--height-header} - #{$--height-footer} + var(--sab));
+    .van-nav-bar.van-nav-bar--fixed {
+      top: var(--sat);
+    }
+    .content {
+      margin-top: $--height-header;
+    }
+  }
+
+  .spacer {
+    clear: both;
+  }
 }

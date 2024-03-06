@@ -19,7 +19,10 @@ export default {
   components: {
   },
   props: {
-    orderTypeDataArray: Array
+    orderTypeDataArray: {
+      type: Array,
+      default: () => ([])
+    }
   },
   data () {
     return {

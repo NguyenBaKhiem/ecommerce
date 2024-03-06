@@ -133,10 +133,9 @@
           )
             icon(:name="'cross'")
             //- icon(:name="reduce ? 'arrow' : 'arrow-left'")
-    popup(
+    popup.search(
       v-model="popupSearch"
       position="bottom"
-      :style="{ height: '100%' }"
     )
       search(
         v-model="value"
@@ -145,6 +144,7 @@
         input-align="center"
         shape="round"
         placeholder="Placeholder"
+        safe-area-inset-bottom
         @cancel="popupSearch = false"
       )
 </template>

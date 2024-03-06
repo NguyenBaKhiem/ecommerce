@@ -1,0 +1,66 @@
+// MEDIA QUERY MANAGER
+/*
+0 - 768px:      Phone
+768 - 992px:    Tablet portrait
+992 - 1200px:   Tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px + :      Big desktop
+$breakpoint arguement choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+ORDER: Base + typography > general layout + grid > page layout > components
+1em = 16px
+
+---- THIS IS NOT MOBILE FIRST
+*/
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+      @media only screen and (max-width: $--width-mobile) { @content };    //768px
+  }
+  @if $breakpoint == tab-port {
+      @media only screen and (max-width: $--width-tablet-portrait) { @content };     //992px
+  }
+  @if $breakpoint == tab-land {
+      @media only screen and (max-width: $--width-tablet-landscape) { @content };    //1200px
+  }
+  @if $breakpoint == big-desktop {
+      @media only screen and (min-width: $--width-big-desktop) { @content };    //1800
+  }
+}
+
+
+// Recolor svg
+@mixin recolor($color: white, $opacity: 1) {
+  $r: red($color) / 255;
+  $g: green($color) / 255;
+  $b: blue($color) / 255;
+  $a: $opacity;
+
+  // grayscale fallback if SVG from data url is not supported
+  $lightness: lightness($color);
+  // filter: saturate(0%) brightness(0%) invert($lightness) opacity($opacity);
+  filter: saturate(100%) brightness(100%) invert($lightness) opacity($opacity);
+
+  // color filter
+  // $svg-filter-id: "recolor";
+  // filter: url('data:image/svg+xml;utf8,\
+  //   <svg xmlns="http://www.w3.org/2000/svg">\
+  //     <filter id="#{$svg-filter-id}" color-interpolation-filters="sRGB">\
+  //       <feColorMatrix type="matrix" values="\
+  //         0 0 0 0 #{$r}\
+  //         0 0 0 0 #{$g}\
+  //         0 0 0 0 #{$b}\
+  //         0 0 0 #{$a} 0\
+  //       "/>\
+  //     </filter>\
+  //   </svg>\
+  //   ##{$svg-filter-id}');
+}
+
+// height
+
+@mixin hight($h: 100) {
+  height: calc(var(--vh, 1vh) * $h);
+}

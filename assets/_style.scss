@@ -1,8 +1,10 @@
 @import "general";
 @import "utilities";
+@import "mixins";
+@import "./element/vant";
 
 .van-nav-bar__content {
-  height: 48px;
+  height: $--height-header;
 }
 
 .van-address-list {

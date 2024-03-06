@@ -1,9 +1,8 @@
 <template lang="pug">
   #account.container
     cell-group
-      cell(
+      cell.user(
         is-link
-        style="background-color: #dce6ff;color:#000000;"
         label-class="labelClass"
         center
       )
@@ -98,12 +97,15 @@
         icon="/language.svg"
         :to="{ name: 'account-language' }"
       )
-    popup(
+    popup.feedback(
       round
       closeable
       position="bottom"
       v-model="showFeedBack"
-      :style="{ height: '42%' }"
+      :style="{ height: '55%' }"
+      safe-area-inset-bottom
+      transition-appear
+      :z-index="2010"
     )
       .mt-30.mx-8
         field(name="rate" label="Rate")
@@ -125,6 +127,8 @@
         popup(
           round
           position="bottom"
+          :style="{ height: '38%' }"
+          safe-area-inset-bottom
           v-model="showFeedbackPicker"
         )
           picker(
@@ -161,6 +165,7 @@
         block
         plain
         size="small"
+        @click.native="$auth.logout()"
       )
         | Logout
 
@@ -257,6 +262,11 @@ export default {
   .cell__left-icon {
     color: #45c763;
     font-size: 1.2rem;
+  }
+  .user {
+    background: $--color-pattens-blue;
+    background: linear-gradient(79deg, #{$--color-pattens-blue} 0%, #{$--color-hawkes-blue} 100%);
+    color:$--color-black;
   }
 }
 </style>

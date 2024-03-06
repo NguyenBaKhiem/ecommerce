@@ -1,9 +1,10 @@
-import vi from './locales/vi.js'
-import en from './locales/en.js'
-import { resolve } from 'path'
+// const vi = require('./locales/vi.js')
+// const en = require('./locales/en.js')
+const path = require('path')
+
 require('dotenv').config()
 
-export default {
+module.exports = {
   server: {
     // For support the https server
     // https: {
@@ -20,8 +21,11 @@ export default {
     title: 'Ecommnerce',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      { name: 'viewport', content: 'width=device-width, height=device-height, initial-scale=1, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover' },
+      { hid: 'description', name: 'description', content: '' },
+      { hid: 'description', name: 'theme-color', content: 'blue' },
+      { name: 'msapplication-TileColor', content: '#282828' },
+      { hid: 'apple-mobile-web-app-capable', name: 'apple-mobile-web-app-capable', content: 'yes' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -37,6 +41,10 @@ export default {
       // { src: 'https://unpkg.com/ionicons@5.0.0/dist/ionicons.js' }
     ]
   },
+
+  telemetry: false,
+
+  dev: process.env.NODE_ENV !== 'production',
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
@@ -57,9 +65,9 @@ export default {
   /**
    * Global middleware
    */
-  // router: {
-  //   middleware: ['auth']
-  // },
+  router: {
+    // middleware: ['auth']
+  },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
@@ -69,7 +77,8 @@ export default {
     { src: '@/plugins/vuesax' },
     { src: '@/plugins/flows' },
     // { src: '@/plugins/inject-scss' },
-    { src: '@/plugins/workspaces', mode: 'client' }
+    { src: '@/plugins/workspaces', mode: 'client' },
+    { src: '@/plugins/extensions', mode: 'client' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -96,6 +105,7 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/dotenv',
     '@nuxtjs/style-resources',
+    '@nuxtjs/axios',
     '@nuxtjs/auth-next',
     [
       'nuxt-i18n',
@@ -127,11 +137,11 @@ export default {
         defaultLocale: 'vi',
         langDir: 'locales/',
         vueI18n: {
-          fallbackLocale: 'vi',
-          messages: {
-            en,
-            vi
-          }
+          fallbackLocale: 'vi'
+          // messages: {
+          //   en,
+          //   vi
+          // }
         }
       }
     ]
@@ -148,7 +158,11 @@ export default {
       theme_color: '#282828',
       background_color: '#1F1C1D'
     },
+    workbox: {
+      cleanupOutdatedCaches: true
+    },
     meta: {
+      viewport: 'width=device-width, height=device-height, initial-scale=1, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover',
       mobileAppIOS: true,
       appleStatusBarStyle: 'black-translucent',
       nativeUI: true
@@ -174,10 +188,14 @@ export default {
       home: false
     },
     strategies: {
-      local: false
+      local: false,
       // apollo: {
       //   _scheme: '~/utilities/apollo-schema'
       // }
+      auth0: {
+        domain: 'notion.au.auth0.com',
+        clientId: 'ZqTcSa27Bf5H185EsypKXTBE1zAEuKiu'
+      }
     },
     rewriteRedirects: true,
     fullPathRedirect: true,
@@ -238,7 +256,7 @@ export default {
         test: /\.(pug)$/,
         loader: 'pug-plain-loader',
         options: {
-          basedir: resolve(__dirname, 'templates')
+          basedir: path.resolve(__dirname, 'templates')
         }
       })
       // config.module.rules.push({

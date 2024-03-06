@@ -5,14 +5,13 @@
       left-arrow
       :border="false"
       :z-index="2001"
-      style="height: 48px"
       :title="$t('pages.language.title')"
       :right-text="$t('common.confirm')"
       @click-left="onClickLeft"
       @click-right="onClickSave"
     )
 
-    div(style="margin-top: 48px;")
+    .content
       radio-group(v-model="radio")
         cell-group
           cell(
